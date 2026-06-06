@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Editor / OS cruft
+*~
+.idea/
+.vscode/
+
+# Temporary Office lock files
+~$*.docx
