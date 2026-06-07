@@ -1,0 +1,24 @@
+{
+  "name": "@unheard/gateway",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "echo \"(lint: configure eslint in E0-5)\""
+  },
+  "dependencies": {
+    "@unheard/shared": "*",
+    "fastify": "^4.28.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}

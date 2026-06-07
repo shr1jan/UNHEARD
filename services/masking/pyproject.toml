@@ -1,0 +1,24 @@
+[project]
+name = "unheard-masking"
+version = "0.0.0"
+description = "Unheard voice-masking service (neural voice conversion, GPU). Raw audio in-memory only."
+requires-python = ">=3.11"
+dependencies = [
+    # Pinned for real once a VC model is chosen in E1-1. Kept minimal here so the
+    # privacy-guard tests run without the heavy ML/GPU stack.
+    "fastapi>=0.111",
+    "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

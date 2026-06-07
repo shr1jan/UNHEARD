@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# The privacy/safety gates are first-class CI, not afterthoughts. (Epic E5)
+jobs:
+  privacy-scan:
+    name: Privacy scan (raw-audio paths)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static disk-write scan
+        run: bash scripts/privacy_scan.sh
+
+  node:
+    name: Node — typecheck + privacy gate tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install
+      - run: npm run typecheck
+      - run: npm run test   # serialize.test.ts (NFR-PRIV-04), routes.privacy.test.ts (NFR-PRIV-05)
+
+  python:
+    name: Python — masking + moderation safety gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: masking (no-disk-writes gate, E5-1)
+        working-directory: services/masking
+        run: |
+          python -m pip install -e ".[dev]"
+          ruff check .
+          pytest -q
+      - name: moderation (pain-never-blocked gate, E7)
+        working-directory: services/moderation
+        run: |
+          python -m pip install -e ".[dev]"
+          ruff check .
+          pytest -q

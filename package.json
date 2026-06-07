@@ -1,0 +1,20 @@
+{
+  "name": "unheard",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Unheard — anonymous, voice-only social space with a human crisis hotline. Monorepo root.",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "privacy:scan": "bash scripts/privacy_scan.sh"
+  }
+}

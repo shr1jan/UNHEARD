@@ -1,0 +1,10 @@
+{
+  "name": "@unheard/client",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Unheard mobile client (React Native + TypeScript). Placeholder until E0-5 scaffolds the RN app.",
+  "scripts": {
+    "typecheck": "echo \"(client RN app not yet scaffolded — see README)\"",
+    "test": "echo \"(no client tests yet)\""
+  }
+}

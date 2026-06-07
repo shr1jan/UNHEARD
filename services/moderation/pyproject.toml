@@ -1,0 +1,19 @@
+[project]
+name = "unheard-moderation"
+version = "0.0.0"
+description = "Unheard moderation: three-way sort (pain protect / harm block / crisis help). In-memory transcripts only."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

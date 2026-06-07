@@ -8,3 +8,28 @@
 
 # Temporary Office lock files
 ~$*.docx
+
+# Node
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+npm-debug.log*
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Env / secrets (never commit real values — see infra/.env.example)
+.env
+.env.*
+!.env.example
+
+# Local infra volumes
+infra/.data/
